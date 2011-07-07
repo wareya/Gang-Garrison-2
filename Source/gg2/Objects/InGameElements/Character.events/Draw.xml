@@ -45,6 +45,10 @@ if team == global.myself.team &amp;&amp; (id != global.myself.object.id || globa
     draw_set_alpha(1);
     draw_healthbar(xr-10, yr-30, xr+10, yr-25,hp*100/maxHp,c_black,c_red,c_green,0,true,true);
 }    
+
+//Domination Indicator
+if (killtable_get(player.killTable,global.myself) &gt;= 3) draw_sprite_ext(DominationS,player.team, xr, yr-35,1,1,0,c_white,cloakAlpha);
+
 if(distance_to_point(mouse_x, mouse_y)&lt;25) {
     if cloak &amp;&amp; team!=global.myself.team exit;
     draw_set_alpha(1);

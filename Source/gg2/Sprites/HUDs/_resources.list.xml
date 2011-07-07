@@ -50,4 +50,5 @@
   <resource name="NemesisS" type="RESOURCE"/>
   <resource name="MedalS" type="RESOURCE"/>
   <resource name="TimerOutlineS" type="RESOURCE"/>
+  <resource name="DominationS" type="RESOURCE"/>
 </resources>

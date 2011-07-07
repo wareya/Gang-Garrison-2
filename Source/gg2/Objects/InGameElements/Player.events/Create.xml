@@ -20,6 +20,9 @@
     socket = -1;
     name = "";
     
+    //Dominations
+    killTable = killtable_create();
+    
     //fuck your shit I'm making statistic arrays
     stats[KILLS] = 0;
     stats[DEATHS] = 0;
