@@ -13,8 +13,9 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">    if(global.updateType == FULL_UPDATE) {
-        receiveCompleteMessage(global.serverSocket,12,global.deserializeBuffer);
+        <argument kind="STRING">//Player User Event 13
+    if(global.updateType == FULL_UPDATE) {
+        receiveCompleteMessage(global.serverSocket,13,global.deserializeBuffer);
         stats[KILLS] = read_ubyte(global.deserializeBuffer);
         stats[DEATHS] = read_ubyte(global.deserializeBuffer);
         stats[CAPS] = read_ubyte(global.deserializeBuffer);
@@ -26,6 +27,16 @@
         stats[INVULNS] = read_ubyte(global.deserializeBuffer);
         stats[BONUS] = read_ubyte(global.deserializeBuffer);
         stats[POINTS] = read_ubyte(global.deserializeBuffer);
+        size = read_ubyte(global.deserializeBuffer);
+        receiveCompleteMessage(global.serverSocket,size*2,global.deserializeBuffer);
+        for (i = 0; i &lt; size; i+= 1)
+        {
+            player = read_ubyte(global.deserializeBuffer);
+            player = ds_list_find_value(global.players,player);
+            value = read_ubyte(global.deserializeBuffer);
+            killtable_add(killTable,player);
+            killtable_set(killTable,player,value);
+        }
     }
  
     var charObj, subobjects;

@@ -68,7 +68,7 @@ if(killer)
         {
             recordDominationInLog(victim, killer,1);
         }
-        else if (killtable_get(killer.killTable,victim) == 0)
+        else if (killtable_get(killer.killTable,victim) == 2)
         {
             recordDominationInLog(victim, killer,0);
         }
@@ -467,7 +467,7 @@ with(victim.object) {
 //*************************************
 //*         Deathcam
 //*************************************
-if( global.killCam and victim == global.myself and killer and killer != victim and !(damageSource == KILL_BOX || damageSource == FRAG_BOX || damageSource == FINISHED_OFF || damageSource == FINISHED_OFF_GIB || damageSource == GENERATOR_EXPLOSION)) {
+if (global.killCam and victim == global.myself and killer and killer != victim and !(damageSource == KILL_BOX || damageSource == FRAG_BOX || damageSource == FINISHED_OFF || damageSource == FINISHED_OFF_GIB || damageSource == GENERATOR_EXPLOSION)) {
     instance_create(0,0,DeathCam);
     DeathCam.killedby=killer;
     DeathCam.name=killer.name;

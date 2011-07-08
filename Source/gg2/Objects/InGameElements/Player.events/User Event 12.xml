@@ -13,7 +13,8 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">var subobjects;
+        <argument kind="STRING">//Player User Event 12
+var subobjects;
 
     if(global.updateType == FULL_UPDATE) {
         write_ubyte(global.serializeBuffer, stats[KILLS]);
@@ -26,7 +27,16 @@
         write_ubyte(global.serializeBuffer, stats[DEFENSES]);
         write_ubyte(global.serializeBuffer, stats[INVULNS]);
         write_ubyte(global.serializeBuffer, stats[BONUS]);
-        write_ubyte(global.serializeBuffer, stats[POINTS]); 
+        write_ubyte(global.serializeBuffer, stats[POINTS]);
+        players = ds_list_find_value(killTable,0);
+        values = ds_list_find_value(killTable,1);
+        size = ds_list_size(players);
+        write_ubyte(global.serializeBuffer,size);
+        for (i = 0; i &lt; size; i+= 1)
+        {
+            write_ubyte(global.serializeBuffer,ds_list_find_index(global.players,ds_list_find_value(players,i)));
+            write_ubyte(global.serializeBuffer,ds_list_find_value(values,i));
+        }
     } 
     
     subobjects=0;
