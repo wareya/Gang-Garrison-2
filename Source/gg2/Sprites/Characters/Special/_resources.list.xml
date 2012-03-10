@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
   <resource name="OmnomnomnomS" type="RESOURCE"/>
+  <resource name="ScoutDoublejmpRedS" type="RESOURCE"/>
+  <resource name="ScoutDoublejmpBlueS" type="RESOURCE"/>
+  <resource name="SniperCrouchRedS" type="RESOURCE"/>
+  <resource name="SniperCrouchBlueS" type="RESOURCE"/>
 </resources>

@@ -74,6 +74,17 @@ if zoomed
         sprite = SniperCrouchBlueS
     }
 }
+else if doublejumpUsed and vspeed &lt; 0
+{
+    if team == TEAM_RED
+    {
+        sprite = ScoutDoublejmpRedS
+    }
+    else
+    {
+        sprite = ScoutDoublejmpBlueS
+    }
+}
 else
 {
     sprite = sprite_index
