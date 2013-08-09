@@ -14,7 +14,7 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">{
-    menu_create(40, 100, 300, 200, 30);
+    menu_create(40, 100, 300, 200, 30, 32, 90, 128);
     
     if room != Options {
         menu_setdimmed();
@@ -35,9 +35,30 @@
     menu_addedit_key("Change Team:", "global.changeTeam");
     menu_addedit_key("Change Class:", "global.changeClass");
     menu_addedit_key("Show Scores:", "global.showScores");
+    
+    menu_addtablink("Ingame", '
+        instance_create(x,y,OptionsController);
+        instance_destroy();
+    ');
+    menu_addtablink("Engine", '
+        instance_create(x,y,EngineOptionsController);
+        instance_destroy();
+    ');
+    menu_addtablink("Controls", '
+        instance_create(x,y,ControlsController);
+        instance_destroy();
+    ');
+    menu_addtablink("HUD Options", '
+        instance_create(x,y,HUDOptionsController);
+        instance_destroy();
+    ');
+    
     menu_addback("Back", '
         instance_destroy();
-        instance_create(x,y,OptionsController);
+        if(room == Options)
+            room_goto_fix(Menu);
+        else
+            instance_create(0,0,InGameMenuController);
     ');
 }
 </argument>
