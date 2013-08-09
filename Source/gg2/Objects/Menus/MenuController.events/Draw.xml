@@ -30,8 +30,20 @@
     draw_set_halign(fa_left);
     draw_set_alpha(1);
     
-    itemx = view_xview[0]+xbegin;
+    for(i=0; i&lt;tabs; i+=1)
+    {
+        if(i == -2-virtualitem and !editing)
+        {
+            draw_set_color(c_red);    
+        }
+        else
+        {
+            draw_set_color(c_white);    
+        }
+        draw_text(view_xview[0]+xbegin+tabmargin+i*tabspacing,view_yview[0]-taboffset+ybegin,tab_name[i]);
+    }
     
+    itemx = view_xview[0]+xbegin;
     for (i = 0; i &lt; items; i += 1)
     {
         itemy = view_yview[0]+ybegin+i*spacing;
@@ -44,6 +56,7 @@
             
             draw_set_alpha(1);
         }
+    
         if (editing == i)
             draw_set_color(c_orange);
         else if(i == virtualitem and getsHighlight)
