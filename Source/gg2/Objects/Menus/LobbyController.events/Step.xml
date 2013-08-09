@@ -104,7 +104,7 @@
     }
     
     if(mouse_x &gt; xbegin and mouse_x &lt; xbegin+width) {
-        virtualitem = round((mouse_y-ybegin)/spacing-0.5);
+        virtualitem = round((mouse_y-ybegin+12)/spacing-0.5);
         if(virtualitem&lt;0 or virtualitem&gt;items) {
             virtualitem = -1;
         } else {

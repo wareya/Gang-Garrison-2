@@ -20,13 +20,16 @@ global.Server_RespawntimeSec = ini_read_real("Server", "Respawn Time", 5);
 readClasslimitsFromIni();
 ini_close();
 
+instance_create(0, 0, HostWarningsController);
+
 //Server respawn time calculator. Converts each second to a frame. (read: multiply by 30 :hehe:)
 if (global.Server_RespawntimeSec == 0)
     global.Server_Respawntime = 1;
 else
     global.Server_Respawntime = global.Server_RespawntimeSec * 30;
 
-menu_create(40, 130, 500, 200, 30);
+menu_create(40, 132, 500, 200, 32);
+menu_background(512, 24, 8, 12, 4);
 menu_addedit_text2("Server Name:", "global.serverName", '
     var newName;
     newName = string_copy(argument0, 0, 25);

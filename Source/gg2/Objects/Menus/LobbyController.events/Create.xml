@@ -14,10 +14,10 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">virtualitem = -1;
-xbegin = 110;
-ybegin = 150;
-spacing = 32;
-width = 435; 
+xbegin = 112;
+ybegin = 152;
+spacing = 40;
+width = 440; 
 items = 12;
 offset = 0;
 

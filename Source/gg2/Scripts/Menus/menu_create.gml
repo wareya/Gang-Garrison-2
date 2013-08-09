@@ -15,3 +15,6 @@ editing = -1;
 dimmed = false;
 stepHasRun = false;
 menu_script_back = "";
+drawbg = false;
+getsHighlight = true;
+

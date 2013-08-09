@@ -13,7 +13,8 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">menu_create(40, 200, 300, 200, 30);
+        <argument kind="STRING">menu_create(40, 200, 300, 200, 32);
+menu_background(312, 24, 8, 12, 4);
 
 menu_addedit_num("Scout:", "global.classlimits[CLASS_SCOUT]", '
     gg2_write_ini("Classlimits", "Scout", argument0);

@@ -13,7 +13,9 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">menu_create(312, 115, 258, 100, 30);
+        <argument kind="STRING">menu_create(312, 116, 250, 100, 30);
+
+menu_background(272, 24, 8, 12, 4);
 
 menu_addedit_text2("Player name:", "global.playerName", '
     var newName;

@@ -15,29 +15,34 @@
       <arguments>
         <argument kind="STRING">var i, server;
 draw_set_color(c_black);
-draw_set_alpha(0.8);
+draw_set_alpha(0.5);
 
-draw_rectangle(xbegin-10, ybegin-10, xbegin+width+25, 550, false);
-
-draw_set_alpha(0.45);
-draw_rectangle(xbegin-10, ybegin-45, xbegin+width+25, ybegin-26, false);
+draw_pinched_blackrect(xbegin-8, ybegin-16, width+32, 408, 4, false);
+draw_pinched_blackrect(xbegin-8, ybegin-48, 192, 24, 4, false);
 
 draw_set_alpha(1);
 draw_set_color(c_white);
-
 draw_set_valign(fa_top);
 
 /* Let the user know the servers are loading */
-if (lobbysocket != -1) {
+if (lobbysocket != -1)
     headerstring = "Loading...";
-} else {
+else
     headerstring = "Servers ("+string(serversRead)+"/"+string(numServers)+") ";
-}
 
-draw_text(xbegin, ybegin-1.25*spacing, headerstring);
+draw_text(xbegin, ybegin-41, headerstring);
 
-for(i=offset; i&lt;ds_list_size(servers) and i&lt;offset+items; i+=1) {
+for(i=offset; i&lt;ds_list_size(servers) and i&lt;offset+items; i+=1)
+{
+    var pixeloffset;
+    pixeloffset = spacing*(i-offset)-3;
     server = ds_list_find_value(servers, i);
+    
+    draw_set_color(c_black);
+    draw_set_alpha(0.5);
+    draw_pinched_blackrect(xbegin, ybegin+pixeloffset-5, width, 32, 4, true);
+    
+    draw_set_alpha(1);
     if(i==virtualitem) {
         draw_set_color(c_red);
     } else if(server.compatible) {
@@ -48,14 +53,14 @@ for(i=offset; i&lt;ds_list_size(servers) and i&lt;offset+items; i+=1) {
     
     draw_set_halign(fa_left);
     if(server.private)
-        draw_sprite(ControlPointLockS,0,xbegin,ybegin+spacing*(i-offset)+5);
-    draw_text(xbegin+10, ybegin+spacing*(i-offset),"["+server.playerstring+"]");
-    draw_text(xbegin+95, ybegin+spacing*(i-offset),server.name);
+        draw_sprite(ControlPointLockS,0,xbegin,ybegin+pixeloffset+5);
+    draw_text(xbegin+10, ybegin+pixeloffset,"["+server.playerstring+"]");
+    draw_text(xbegin+95, ybegin+pixeloffset,server.name);
     if(ds_map_exists(server.infos, "map"))
-        draw_text(xbegin+95,  ybegin+spacing*(i-offset),"#"+ds_map_find_value(server.infos, "map"));
+        draw_text(xbegin+95,  ybegin+pixeloffset,"#"+ds_map_find_value(server.infos, "map"));
     
     draw_set_halign(fa_right);
-    draw_text(xbegin+425, ybegin+spacing*(i-offset),server.shortgame);
+    draw_text(xbegin+425, ybegin+pixeloffset,server.shortgame);
     
     /* Draw latency and color indicators */
     if(server.pingFinished) {
@@ -72,7 +77,7 @@ for(i=offset; i&lt;ds_list_size(servers) and i&lt;offset+items; i+=1) {
             showping = "TIMEOUT";
         }
 
-        draw_text_color(xbegin+425, ybegin+spacing*(i-offset),"#"+showping,docol,docol,docol,docol,1);
+        draw_text_color(xbegin+425, ybegin+pixeloffset,"#"+showping,docol,docol,docol,docol,1);
     }
 }
 </argument>

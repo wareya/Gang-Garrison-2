@@ -13,19 +13,16 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">menu_create(24, 148, 72, 100, 30);
+        <argument kind="STRING">menu_create(80, 40, 340, 200, 40);
+menu_background(352, 32, 8, 16, 4);
+bgbezel = false;
+getsHighlight = false;
 
-menu_background(80, 24, 8, 12, 4);
+menu_addlink("", '');
+menu_addlink("", '');
+menu_addlink("", '');
+menu_addlink("", '');
 
-menu_addlink("Refresh", '
-    event_user(0);
-');
-menu_addback("Back", '
-    room_goto_fix(Menu);
-');
-
-cooleddown = false;
-alarm[1] = 90;
 </argument>
       </arguments>
     </action>

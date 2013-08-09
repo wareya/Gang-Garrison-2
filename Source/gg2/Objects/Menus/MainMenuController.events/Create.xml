@@ -15,7 +15,10 @@
       <arguments>
         <argument kind="STRING">{
     global.levelchoice = 1
-    menu_create(40, 300, 200, 200, 30);
+    menu_create(40, 300, 200, 200, 32);
+    
+    menu_background(208, 24, 8, 12, 4);
+    
     menu_addlink("Host Game", 'event_user(0);');
     menu_addlink("Join (lobby)", '
         room_goto_fix(Lobby);
