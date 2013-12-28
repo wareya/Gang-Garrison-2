@@ -16,7 +16,10 @@
         <argument kind="STRING">if(readyToShoot and ammoCount &gt;0 and global.isHost)
 {
     var seed;
-    seed = irandom(65535);
+    if (global.randomSpread == 1)
+        seed = irandom(65535);
+    else
+        seed = 3;
     sendEventFireWeapon(ownerPlayer, seed);
     doEventFireWeapon(ownerPlayer, seed);
 }

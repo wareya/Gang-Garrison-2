@@ -110,6 +110,7 @@
     global.backgroundShowVersion = ini_read_real("Background", "BackgroundShowVersion", true);
     
     global.resolutionkind = ini_read_real("Settings", "Resolution", 1);
+    global.randomSpread = ini_read_real("Server", "Random Spread", 1);
     
     readClasslimitsFromIni();
 
@@ -163,6 +164,7 @@
     ini_write_real("Settings", "CrosshairRemoveBG", CrosshairRemoveBG);
     ini_write_real("Settings", "Queued Jumping", global.queueJumping);
     ini_write_real("Settings", "Hide Spy Ghosts", global.hideSpyGhosts);
+    ini_write_real("Server", "Random Spread", global.randomSpread);
 
     ini_write_string("Background", "BackgroundHash", global.backgroundHash);
     ini_write_string("Background", "BackgroundTitle", global.backgroundTitle);
