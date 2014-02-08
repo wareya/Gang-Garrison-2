@@ -90,17 +90,28 @@
         menu_add_option(3, "16:9");
         menu_add_option(4, "2:1");
     ');
-    menu_addedit_boolean("V Sync:", "global.monitorSync", '
-    if (instance_exists(GameServer))
-    {
-        show_message("vSync may not be enabled while the server is running");
-        global.monitorSync = 0;
-    }
-    else 
-    {
+    menu_addedit_select("V Sync:", "global.monitorSync", '
         gg2_write_ini("Settings", "Monitor Sync", argument0);
+    ','
+        menu_add_option(0, "Enabled(Client Only)");
+        menu_add_option(1, "Disabled");
+        menu_add_option(2, "Enabled(Client and Server)");
+        
+        if(argument0 == 2)
+            show_message("Warning: Enabling vSync for the server may cause players to desync");
         set_synchronization(argument0);
-    }
+        //update setting if changed while server is running
+        if (instance_exists(GameServer))
+        {
+            if (global.monitorSync == 2)
+            {
+                set_synchronization(1);
+            }
+            else
+            {
+                set_synchronization(0);
+            }
+        }
     ');
     menu_addedit_boolean("Prompt for server-sent plugins:", "global.serverPluginsPrompt", '
         if (argument0 == false)
@@ -131,6 +142,9 @@
     menu_addback("Back", '
         if(warnoptioneffect)
             show_message("An option you changed only takes effect on map change or server join.");
+        //multiple warnings because PLEASE DO NOT enable vsync while the server is running
+        if(global.monitorSync ==2)
+            show_message("Warning: Enabling vSync for the server may cause players to desync");
         instance_destroy();
         if(room == Options)
             room_goto_fix(Menu);
