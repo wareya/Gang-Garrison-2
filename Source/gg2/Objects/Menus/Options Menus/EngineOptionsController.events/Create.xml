@@ -143,7 +143,7 @@
         if(warnoptioneffect)
             show_message("An option you changed only takes effect on map change or server join.");
         //multiple warnings because PLEASE DO NOT enable vsync while the server is running
-        if(global.monitorSync ==2)
+        if(global.monitorSync == 2)
             show_message("Warning: Enabling vSync for the server may cause players to desync");
         instance_destroy();
         if(room == Options)
