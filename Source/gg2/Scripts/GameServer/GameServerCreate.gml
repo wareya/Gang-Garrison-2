@@ -144,6 +144,7 @@
     }
     if (global.monitorSync != 2)
     {
+        // "vsync makes the server desync"
         set_synchronization(0)
     }
 }
