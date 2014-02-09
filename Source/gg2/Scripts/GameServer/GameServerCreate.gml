@@ -142,10 +142,9 @@
     {
         pluginList = '';
     }
-    //vsync makes the server desync
-    if (global.monitorSync == 1)
+    if (global.monitorSync != 2)
     {
-        global.monitorSync = 0;
+        // "vsync makes the server desync"
         set_synchronization(0)
     }
 }
