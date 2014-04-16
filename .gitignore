@@ -2,7 +2,7 @@
 *.gmk
 *.gb1
 /background.png
-gg2.ini
-Maps/
+/gg2.ini
+/Maps/
 Screenshots/
 ServerPluginsCache/
