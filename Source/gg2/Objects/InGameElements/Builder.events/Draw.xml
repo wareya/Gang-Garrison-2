@@ -170,6 +170,8 @@ draw_text(xOffset+40, yOffset+buttonHeight-18+layerHeight, "Clear");
 if (!setOffsets)
 {
     draw_rectangle(xOffset+97, yOffset+buttonHeight-3+layerHeight, xOffset+157, yOffset+buttonHeight-23+layerHeight, true);
+    if(!(layerIndex &lt; 7 and background_visible[layerIndex]))
+        draw_set_color(c_gray);
     draw_text(xOffset+100, yOffset+buttonHeight-18+layerHeight, " Depth");
 }
 else
@@ -177,13 +179,11 @@ else
     draw_rectangle(xOffset+97, yOffset+buttonHeight-3+layerHeight, xOffset+111, yOffset+buttonHeight-23+layerHeight, true);
     draw_rectangle(xOffset+111, yOffset+buttonHeight-3+layerHeight, xOffset+125, yOffset+buttonHeight-23+layerHeight, true);
     draw_rectangle(xOffset+125, yOffset+buttonHeight-3+layerHeight, xOffset+157, yOffset+buttonHeight-23+layerHeight, true);
-    if(!(layerIndex &lt; 7 or background_visible[layerIndex]))
+    draw_text(xOffset+125, yOffset+buttonHeight-18+layerHeight, "Save");
+    if(!(layerIndex &lt; 7 and background_visible[layerIndex]))
         draw_set_color(c_gray);
     draw_text(xOffset+98, yOffset+buttonHeight-18+layerHeight, "X");
     draw_text(xOffset+112, yOffset+buttonHeight-18+layerHeight, "Y");
-    if(!(layerIndex &lt; 7 or background_visible[layerIndex]))
-        draw_set_color(c_black);
-    draw_text(xOffset+125, yOffset+buttonHeight-18+layerHeight, "Save");
     if(layerIndex &lt; 7 and background_visible[layerIndex])
     {
         draw_set_color(make_color_rgb(159, 159, 159));
@@ -194,6 +194,7 @@ else
         draw_text(xOffset+13, yOffset+30-43, "Y: " + string(ParallaxController.background_yfactor[layerIndex]));
     }
 }
+draw_set_color(make_color_rgb(63, 63, 63));
 draw_text(xOffset+6, yOffset+buttonHeight + 35, layerName);
 
 // Layer preview
@@ -245,6 +246,12 @@ if (tooltipIdx &gt;= 0) {
         draw_text(x2, y2, entityButtons[tooltipIdx, TOOLTIP]);
     }
 }
+
+if(draggingDX)
+    draw_sprite(SliderHS, 0, view_xview+holdX+mouseRealXOffset,view_yview+holdY+mouseRealYOffset);
+if(draggingDY)
+    draw_sprite(SliderVS, 0, view_xview+holdX+mouseRealXOffset,view_yview+holdY+mouseRealYOffset);
+
 </argument>
       </arguments>
     </action>

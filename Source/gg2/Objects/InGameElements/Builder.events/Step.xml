@@ -67,7 +67,7 @@ else {
                 }
             }
             if (mouse_check_button_released(mb_left) and (draggingDX or draggingDY)) {
-                window_mouse_set(holdX,holdY);
+                window_mouse_set(holdX+mouseRealXOffset,holdY+mouseRealYOffset);
                 draggingDX = false;
                 draggingDY = false;
                 cursor_sprite = oldcursor;
@@ -273,22 +273,28 @@ if (canClick &amp;&amp; !holdHeader[0] &amp;&amp; !holdHeader[1]) {
                     if (mouse_x &gt; xOffset+97 &amp;&amp; mouse_x &lt; xOffset+111 &amp;&amp; layerIndex &lt; 7) {
                         if (mouse_check_button_pressed(mb_left)) 
                         {
-                            holdX = window_mouse_get_x();
-                            holdY = window_mouse_get_y();
+                            holdX = window_get_width()/2;
+                            holdY = window_get_height()/2;
+                            mouseRealXOffset = window_mouse_get_x()-holdX;
+                            mouseRealYOffset = window_mouse_get_y()-holdY;
+                            window_mouse_set(holdX,holdY);
                             draggingDX = true;
                             oldcursor = cursor_sprite;
-                            cursor_sprite = SliderHS;
+                            cursor_sprite = cr_none;
                         }
                      }
                      else if (mouse_x &gt; xOffset+111 &amp;&amp; mouse_x &lt; xOffset+125 &amp;&amp; layerIndex &lt; 7)
                      {
                         if (mouse_check_button_pressed(mb_left))
                         {
-                            holdX = window_mouse_get_x();
-                            holdY = window_mouse_get_y();
+                            holdX = window_get_width()/2;
+                            holdY = window_get_height()/2;
+                            mouseRealXOffset = window_mouse_get_x()-holdX;
+                            mouseRealYOffset = window_mouse_get_y()-holdY;
+                            window_mouse_set(holdX,holdY);
                             draggingDY = true;
                             oldcursor = cursor_sprite;
-                            cursor_sprite = SliderVS;
+                            cursor_sprite = cr_none;
                         }
                      }
                      else if (mouse_x &gt; xOffset+125 &amp;&amp; mouse_x &lt; xOffset+157)
